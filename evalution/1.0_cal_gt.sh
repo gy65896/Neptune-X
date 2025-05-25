@@ -1,0 +1,1 @@
+python -m pytorch_fid --save-stats ./data/images/00_gt_img ./data/images/gt.npz
