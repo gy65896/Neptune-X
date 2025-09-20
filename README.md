@@ -1,6 +1,5 @@
 <div align="center">
 <img align="left" width="70" height="70" src="https://github.com/gy65896/Neptune-X/blob/main/img_file/logo_Neptune-X.png" alt="">
-
  # [NeurIPS 2025] Neptune-X: Active X-to-Maritime Generation for Universal Maritime Object Detection
 
 [![ArXiv](https://img.shields.io/badge/NeptuneX-ArXiv-red.svg)]()
