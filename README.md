@@ -41,6 +41,13 @@
 <img src="https://github.com/gy65896/Neptune-X/blob/main/img_file/selection.jpg" width="1080">
 </div>
 
+## MGD Dataset Construction
+
+</div>
+<div align=center>
+<img src="https://github.com/gy65896/Neptune-X/blob/main/img_file/labelling.jpg" width="1080">
+</div>
+
 ## Code
  
 Waiting Update ...
