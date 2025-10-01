@@ -1,0 +1,21 @@
+{
+    "caption": [
+        "An image of a river scene taken from a shore during dusk. The image captures a foggy evening with a soft, diffused light."
+    ],
+    "boxes": [
+        [[0, 224, 34, 239], [329, 218, 379, 228]]
+    ],
+    "classes": [
+        ["ship","ship"]
+    ],
+    "water_boxes": [
+        [0, 208, 512, 304]
+    ],
+    "water_masks": [
+        "2508, 35, 3, 14, 392, 30, 3, 87, 320, 68, 1, 1, 2, 30, 4, 86, 255, 16, 4, 11, 4, 26, 4, 68, 4, 30, 4, 86, 222, 290, 191, 12, 1, 1, 1, 11, 5, 290, 157, 11, 21, 1, 16, 12, 3, 291, 122, 12, 4, 15, 3, 12, 4, 15, 4, 11, 4, 11, 5, 290, 96, 416, 74, 7, 4, 7, 4, 416, 51, 7, 13, 1, 13, 7, 4, 416, 31, 9, 3, 4, 3, 8, 4, 8, 4, 7, 4, 8, 3, 421, 4, 508, 4, 509, 3, 508, 2, 1, 1, 145911"
+    ],
+    "water_caption": [
+        "The water surface appears calm with a slight reflection of the city lights."
+    ],
+    "size": [512, 512]
+}
