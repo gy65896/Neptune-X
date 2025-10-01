@@ -74,7 +74,9 @@ git clone https://huggingface.co/gy65896/Neptune-X
 
 ### Inference
 
-
+```
+python inference.py --json_path ./sample/1.json --fp16
+```
 
 ## Citation
 
