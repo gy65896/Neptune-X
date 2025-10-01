@@ -24,6 +24,8 @@
 ---
 
 ## News 🚀
+
+* **2025.10.01**: [Dataset](https://huggingface.co/datasets/gy65896/MGD) and [checkpoint](https://huggingface.co/gy65896/Neptune-X) are released.
 * **2025.09.27**: Code is released.
 * **2025.09.19**: Neptune-X is accepted by [NeurIPS2025](https://neurips.cc/).
 
