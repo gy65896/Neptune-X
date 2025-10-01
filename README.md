@@ -48,9 +48,33 @@
 <img src="https://github.com/gy65896/Neptune-X/blob/main/img_file/labelling.jpg" width="1080">
 </div>
 
-## Code
+## Quick Start
  
-Waiting Update ...
+### Install
+
+- python 3.8.20
+- cuda 11.7
+
+```
+# git clone this repository
+git clone https://github.com/gy65896/Neptune-X.git
+cd Neptune-X
+
+# create new anaconda env
+conda env create -f environment.yml
+```
+
+### Pretrained Models
+
+Please download our pre-trained models and put them in  `./ckpts`.
+
+```
+git clone https://huggingface.co/gy65896/Neptune-X
+```
+
+### Inference
+
+
 
 ## Citation
 
