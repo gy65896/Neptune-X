@@ -66,7 +66,7 @@ conda env create -f environment.yml
 
 ### Pretrained Models
 
-Please download our pre-trained models and put them in  `./ckpts`.
+Please download our [pre-trained models](https://huggingface.co/gy65896/Neptune-X) and put them in  `./ckpts`.
 
 ```
 git clone https://huggingface.co/gy65896/Neptune-X
@@ -78,6 +78,26 @@ We provide two samples in `./sample` for the quick inference:
 
 ```
 python inference.py --json_path ./sample/1.json --fp16
+```
+
+### Train
+
+Please download our [MGD dataset](https://huggingface.co/datasets/gy65896/MGD):
+
+```
+git clone https://huggingface.co/datasets/gy65896/MGD
+```
+
+Modify the dataset path in `./configs/X2Mari.yaml` and execute the following command:
+
+```
+CUDA_VISIBLE_DEVICES=0,1,2,3 python -m torch.distributed.launch --nproc_per_node=4 train.py --ckpt_out ckpt --name train --seed 123 --yaml_file ./configs/X2Mari.yaml --batch_size 4 --official_ckpt_name ./ckpt/sd1.5_finetuned.ckpt
+```
+
+### Test
+
+```
+python test.py --data_path ./MGD_test --out_path ./results_test --sd_ckpt ./ckpt/X2Mari.pth
 ```
 
 ## Citation
