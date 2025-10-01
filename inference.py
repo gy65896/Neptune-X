@@ -308,7 +308,7 @@ if __name__ == "__main__":
     parser.add_argument("--json_path", type=str, default="./sample/1.json", help="path to JSON file containing condition data")
     parser.add_argument("--out_path", type=str,  default="./out", help="output path")
 
-    parser.add_argument("--rand_seed", type=int,  default=123, help="")
+    parser.add_argument("--rand_seed", type=int,  default=64, help="")
     parser.add_argument("--batch_size", type=int,  default=4, help="")
     parser.add_argument("--num_workers", type=int,  default=8, help="")
     parser.add_argument("--steps", type=int,  default=50, help="")
