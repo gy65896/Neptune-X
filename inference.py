@@ -53,13 +53,7 @@ def draw_conditions_on_image(image, boxes, classes, water_box, water_mask, capti
         font = ImageFont.load_default()
         small_font = ImageFont.load_default()
     
-    # Draw detection boxes
-    for i, (box, cls) in enumerate(zip(boxes, classes)):
-        x1, y1, x2, y2 = box
-        # Draw rectangle box
-        draw.rectangle([x1, y1, x2, y2], outline='red', width=2)
-        # Draw class label
-        draw.text((x1, y1-20), cls, fill='red', font=font)
+    
     
     # Draw water region
     if isinstance(water_mask, np.ndarray) and len(water_mask.shape) == 2:
@@ -71,6 +65,14 @@ def draw_conditions_on_image(image, boxes, classes, water_box, water_mask, capti
         mask_pil = Image.fromarray(colored_mask, 'RGBA')
         pil_image = Image.alpha_composite(pil_image.convert('RGBA'), mask_pil).convert('RGB')
         draw = ImageDraw.Draw(pil_image)
+
+    # Draw detection boxes
+    for i, (box, cls) in enumerate(zip(boxes, classes)):
+        x1, y1, x2, y2 = box
+        # Draw rectangle box
+        draw.rectangle([x1, y1, x2, y2], outline='red', width=2)
+        # Draw class label
+        draw.text((x1, y1-20), cls, fill='red', font=font)
     
     # Draw text information
     text_y = 10
@@ -337,5 +339,3 @@ if __name__ == "__main__":
         cond['water_masks'] = [decoded_mask] * args.batch_size
 
     main(args, cond)
-
-    
