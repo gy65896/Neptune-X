@@ -4,10 +4,10 @@
 ## [NeurIPS 2025] Neptune-X: Active X-to-Maritime Generation for Universal Maritime Object Detection
 
 [![ArXiv](https://img.shields.io/badge/NeptuneX-ArXiv-red.svg)](https://arxiv.org/abs/2509.20745)
-[![Paper](https://img.shields.io/badge/NeptuneX-Paper-yellow.svg)]()
+[![Paper](https://img.shields.io/badge/NeptuneX-Paper-yellow.svg)](https://openreview.net/pdf/f889110bdee12ecb7d80620038ffe4bbac443310.pdf)
 [![Web](https://img.shields.io/badge/NeptuneX-Web-blue.svg)](https://gy65896.github.io/projects/NeurIPS2025_Neptune-X/index.html)
-[![Poster](https://img.shields.io/badge/NeptuneX-Poster-green.svg)]()
-[![Video](https://img.shields.io/badge/NeptuneX-Video-orange.svg)]()
+[![Poster](https://img.shields.io/badge/NeptuneX-Poster-green.svg)](https://gy65896.github.io/papers/NeurIPS2025_Neptune-X/Neptune-X_poster.jpg)
+[![Video](https://img.shields.io/badge/NeptuneX-Video-orange.svg)](https://www.youtube.com/watch?v=96a0EGoaixk)
  
 </div>
 
