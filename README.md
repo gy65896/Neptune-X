@@ -112,3 +112,4 @@ python test.py --data_path ./MGD_test --out_path ./results_test --sd_ckpt ./ckpt
   year={2025}
 }
 ```
+ 
