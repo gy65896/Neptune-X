@@ -31,7 +31,16 @@ def load_cond_from_json(json_path, batch_size):
     
     return cond
 
-def draw_conditions_on_image(image, boxes, classes, water_box, water_mask, caption, water_caption):
+def draw_conditions_on_image(
+    image,
+    boxes,
+    classes,
+    water_box,
+    water_mask,
+    caption,
+    water_caption,
+    draw_text=True,
+):
     """
     Draw all condition information on image: detection boxes, water mask, text conditions and water description
     """
@@ -74,29 +83,30 @@ def draw_conditions_on_image(image, boxes, classes, water_box, water_mask, capti
         # Draw class label
         draw.text((x1, y1-20), cls, fill='red', font=font)
     
-    # Draw text information
-    text_y = 10
-    line_height = 20
-    
-    # Draw main description text
-    caption_text = f"Caption: {caption[:50]}..."
-    draw.text((10, text_y), caption_text, fill='white', font=small_font)
-    text_y += line_height
-    
-    # Draw water description
-    water_text = f"Water: {water_caption[:50]}..."
-    draw.text((10, text_y), water_text, fill='cyan', font=small_font)
-    text_y += line_height
-    
-    for i, (box, cls) in enumerate(zip(boxes, classes)):
-        box_text = f"Box {i+1}: {cls} at {box}"
-        draw.text((10, text_y), box_text, fill='red', font=small_font)
+    if draw_text:
+        # Draw text information
+        text_y = 10
+        line_height = 20
+
+        # Draw main description text
+        caption_text = f"Caption: {caption[:50]}..."
+        draw.text((10, text_y), caption_text, fill='white', font=small_font)
         text_y += line_height
-    
-    # Draw water box information
-    water_box_text = f"Water Box: {water_box}"
-    draw.text((10, text_y), water_box_text, fill='cyan', font=small_font)
-    text_y += line_height
+
+        # Draw water description
+        water_text = f"Water: {water_caption[:50]}..."
+        draw.text((10, text_y), water_text, fill='cyan', font=small_font)
+        text_y += line_height
+
+        for i, (box, cls) in enumerate(zip(boxes, classes)):
+            box_text = f"Box {i+1}: {cls} at {box}"
+            draw.text((10, text_y), box_text, fill='red', font=small_font)
+            text_y += line_height
+
+        # Draw water box information
+        water_box_text = f"Water Box: {water_box}"
+        draw.text((10, text_y), water_box_text, fill='cyan', font=small_font)
+        text_y += line_height
     
     return pil_image
 
@@ -135,6 +145,7 @@ class Processer:
         self.negative_prompt = args.negative_prompt
         self.max_obj = max_obj
         self.fp16 = args.fp16
+        self.draw_text = True
         
         os.makedirs(args.out_path, exist_ok=True)
         self.image_dir = os.path.join(args.out_path,'image')
@@ -146,7 +157,7 @@ class Processer:
 
     def load_sd_ckpt(self, ckpt_path, steps):
     
-        saved_ckpt = torch.load(ckpt_path)
+        saved_ckpt = torch.load(ckpt_path, map_location=device)
         config = saved_ckpt["config_dict"]["_content"]
 
         model = instantiate_from_config(config['model']).to(device).eval()
@@ -173,7 +184,7 @@ class Processer:
         self.sampler = PLMSSampler(diffusion, model)
         self.steps = steps 
         self.text_encoder = text_encoder
-        self.uc = self.text_encoder.encode( self.batch_size*[args.negative_prompt] )
+        self.uc = self.text_encoder.encode( self.batch_size*[self.negative_prompt] )
         self.grounding_tokenizer_input = grounding_tokenizer_input
         self.model = model
         self.autoencoder = autoencoder
@@ -282,7 +293,8 @@ class Processer:
                 water_boxes[i], 
                 original_water_masks[i], 
                 caption[i], 
-                water_caption[i]
+                water_caption[i],
+                draw_text=self.draw_text,
             )
         
             sample_w_cond.save(os.path.join(self.image_w_cond_dir, f'{cond["file_name"][i][:-4]}.jpg'))
