@@ -83,6 +83,16 @@ We provide two samples in `./sample` for the quick inference:
 python inference.py --json_path ./sample/1.json --fp16
 ```
 
+### Inference with Gradio
+
+```
+python gradio_app.py
+```
+1. First, [download](](https://huggingface.co/gy65896/Neptune-X)) and click "Load Model".
+2. Then, select a pre-built sample or customize various conditions and click "Load Sample" or "Load JSON File".
+3. Next, set the parameters (default settings are recommended).
+4. Finally, click "Start Generation".
+
 ### Train
 
 Please download our [MGD dataset](https://huggingface.co/datasets/gy65896/MGD):
