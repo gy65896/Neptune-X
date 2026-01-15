@@ -11,10 +11,10 @@ CONFIG = {
     "data_root": "./data/boxes",
     "methods": [
         '02_layoutdiff', 
-        #'03_gligen', 
-        #'04_instdiff', 
-        #'05_rc-l2i', 
-        #'06_ours'
+        '03_gligen', 
+        '04_instdiff', 
+        '05_rc-l2i', 
+        '06_ours'
     ],
     "class_order": ["ship", "buoy", "person", "floating object", "fixed object"],
     "img_size": 224,
