@@ -164,6 +164,13 @@ def _collect_images(image_dir):
     return files
 
 
+def _clear_cuda_cache():
+    # Keep model weights in GPU; only clear temporary cached allocations.
+    if torch.cuda.is_available():
+        torch.cuda.empty_cache()
+        torch.cuda.ipc_collect()
+
+
 def load_model(sd_ckpt, fp16):
     args = SimpleNamespace(
         json_path=SAMPLE_JSON_PATH,
@@ -178,6 +185,7 @@ def load_model(sd_ckpt, fp16):
         fp16=bool(fp16),
     )
     _load_processer(args)
+    _clear_cuda_cache()
     return f"Model loaded: {sd_ckpt} (fp16={bool(fp16)})"
 
 
@@ -230,6 +238,7 @@ def run_inference(
 
     process = _configure_processer(args)
     process.generator(cond)
+    _clear_cuda_cache()
 
     image_dir = os.path.join(run_dir, "image")
     image_w_cond_dir = os.path.join(run_dir, "img_w_cond")
